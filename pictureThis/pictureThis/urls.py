@@ -18,8 +18,10 @@ from django.contrib import admin
 from mypictures import views as mypictures_views
 
 from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',mypictures_views.index,name='home')
-]
+    url(r'^$',mypictures_views.index,name='home'),
+    url(r'^article/(?P<slug>[-\w]+)',mypictures_views.article,name='article'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

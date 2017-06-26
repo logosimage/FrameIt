@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-{% %
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Frame It</title>
 </head>
 <body>
+<h1>My Picture Blog</h1>
+{% for art in article%}
+<article>
+    <h4><a href="{% url 'article' art.slug%}">{{art.title}}</a> </h4>
+
+    <p>{{art.content}}</p>
+    <img src="{{art.image.url}}">
+
+    <hr>
+
+</article>
+{%endfor%}
 
 </body>
 </html>
