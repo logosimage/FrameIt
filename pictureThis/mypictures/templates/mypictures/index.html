@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-{%load static%}
+{%load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Frame It</title>
+
 </head>
 <body>
 <h1>My Picture Blog</h1>
 {% for art in article%}
 <article>
     <h4><a href="{% url 'article' art.slug%}">{{art.title}}</a> </h4>
-
     <p>{{art.content}}</p>
-    <img src="{{art.image.url}}">
-
+    <img src="{{art.image.url}}" alt="{{art.image.alt}}">
+    <p> by {{ art.author.username}}</p>
+    <div class="clear tags">
+        <ul> {% for t in art.tags.all %}
+        <li><a href="{% url 'tag' t.slug %}"> {{ t.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
     <hr>
 
 </article>
 {%endfor%}
+
 
 </body>
 </html>

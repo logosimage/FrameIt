@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',mypictures_views.index,name='home'),
     url(r'^article/(?P<slug>[-\w]+)',mypictures_views.article,name='article'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^article/tag/(?P<slug>[-\w]+)/?', mypictures_views.tag, name='tag'),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
