@@ -12,7 +12,7 @@
 <article>
     <h4><a href="{% url 'article' art.slug%}">{{art.title}}</a> </h4>
     <p>{{art.content}}</p>
-    <img src="{{art.image.url}}" alt="{{art.image.alt}}">
+    <img src="{{art.image.img.url}}" alt="{{art.image.alt}}">
     <p> by {{ art.author.username}}</p>
     <div class="clear tags">
         <ul> {% for t in art.tags.all %}
