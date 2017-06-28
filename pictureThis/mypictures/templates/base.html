@@ -4,12 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Frame It</title>
+    <link rel="stylesheet"href="{% static 'app/css/style.css' %}">
+    <!--change references to match your site. app folder and style.css-->
 
 </head>
 <body>
+<div>
+{% include '_nav.html' %}
 
    {% block content %}
-    { % endblock %}
+    {% endblock %}
+    </div>
 </body>
 </html>
 

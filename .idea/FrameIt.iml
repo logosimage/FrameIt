@@ -5,6 +5,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Django Lib" level="project" />
+    <orderEntry type="module" module-name="tango_with_django_project" />
+    <orderEntry type="module" module-name="tmpGPS" />
+    <orderEntry type="module" module-name="Sputter" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_FOLDERS">

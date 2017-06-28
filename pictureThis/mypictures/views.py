@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from.models import Blog
+from.models import Blog, Tag
 
 
 def index(request):
@@ -13,4 +13,4 @@ def article(request, slug):
 def tag(request, slug):
     tag = Tag.objects.get(slug=slug)
     art = Blog.objects.filter(tags__slug=slug)
-    return render(request, 'mypictures/tags.html', {'article':art, 'tag':tag})
+    return render(request, 'mypictures/tag.html', {'article':art, 'tag':tag})

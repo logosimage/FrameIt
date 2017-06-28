@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-{%load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Frame It</title>
-
-</head>
-<body>
-<h1>My Picture Blog</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 id="title">My Picture Blog</h1>
 {% for art in article%}
 <article>
     <h4><a href="{% url 'article' art.slug%}">{{art.title}}</a> </h4>
@@ -24,7 +18,5 @@
 
 </article>
 {%endfor%}
+{% endblock %}
 
-
-</body>
-</html>

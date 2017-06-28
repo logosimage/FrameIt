@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FrameIt.iml" filepath="$PROJECT_DIR$/.idea/FrameIt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Sputter/.idea/Sputter.iml" filepath="$PROJECT_DIR$/../Sputter/.idea/Sputter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tango_with_django_project/.idea/tango_with_django_project.iml" filepath="$PROJECT_DIR$/../tango_with_django_project/.idea/tango_with_django_project.iml" />
+      <module fileurl="file://C:/tmpGPS/.idea/tmpGPS.iml" filepath="C:/tmpGPS/.idea/tmpGPS.iml" />
     </modules>
   </component>
 </project>
