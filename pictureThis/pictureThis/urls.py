@@ -23,6 +23,9 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',mypictures_views.index,name='home'),
+    url(r'api/bloglist',mypictures_views.blog_list_api,name='blog_list_api'),
+    url(r'api/article/(?P<slug>[-\w]+)$',mypictures_views.article_api,name='article_api'),
+    url(r'^article/new/$', mypictures_views.new_article, name='new_article'),
     url(r'^article/(?P<slug>[-\w]+)$',mypictures_views.article,name='article'),
     url(r'^article/tag/(?P<slug>[-\w]+)/?', mypictures_views.tag, name='tag'),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

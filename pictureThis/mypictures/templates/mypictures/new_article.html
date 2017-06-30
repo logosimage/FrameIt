@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    New Article Entry
+{% endblock %}
+{% block content %}
+    <article>
+        <h1>New Article</h1>
+        <form action="{% url 'new_article' %}" method="post" enctype="multipart/form-data">
+           {% csrf_token%}
+            <div class="formField">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title">
+            </div>
+
+            <div class="formField">
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" cols="40" rows="10"></textarea>
+            </div>
+
+            <div class="formField">
+                <label for="image">Image:</label>
+                <input type="file" name="image" id="image">
+            </div>
+
+            <div class="formField">
+                <label for="alt">Alt Description for Image:</label>
+                <input type="text" name="alt" id="alt">
+            </div>
+
+            <div class="formField">
+                <label for="tags">Tags:</label>
+                <select name="tags" id="tags" multiple>
+                    {% for t in tags %}
+                        <option value="{{ t.name }}">{{ t.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="formField">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </article>
+{% endblock %}
