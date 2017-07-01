@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.core import serializers
-from .models import Blog, Tag, image
-from django.http import JsonResponse
+from django.contrib.auth.models import User
+from .models import Blog, Tag, Image
+from django.http import JsonResponse, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -76,17 +78,33 @@ def article_api(request, slug):
 
     return JsonResponse(data, safe=False)
 
-
+@login_required
 def new_article(request):
     tags = Tag.objects.all()
     if request.method == 'POST':
-        art = Blog
-        img = image()
+        art = Blog()
+        img = Image()
 
         if request.FILES.get('image', False):
             img.name = ''
             img.img = request.FILES['image']
             img.alt = request.POST.get('alt', '')
             img.save()
+        art.title = request.POST.get('title', None)
+        art.content = request.POST.get( 'content', None)
+        art.author = User.objects.get(username=request.user.username)
+        if request.FILES.get('image',False):
+            art.image = img
 
-    return  render (request, 'pages/new_article.html',{'tags': tag} )
+        art.save()
+        for t in request.POST.getlist('tags[]', []):
+            art.tags.add(Tag.objects.get(slug=t))
+
+        art.save()
+
+        return HttpResponse('<h1 style="sidth: 100%; text-align: center;"> Thank you</h1>'
+                     '<div><a href="http://localhost:8080">Return Home</a></div>')
+
+    return render(request, 'mypictures/new_article.html', {'tags': tags})
+
+

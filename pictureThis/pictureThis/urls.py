@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from mypictures import views as mypictures_views
 
 from django.conf.urls.static import static
@@ -23,8 +24,13 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',mypictures_views.index,name='home'),
+
+    url(r'^accounts/login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
+
     url(r'api/bloglist',mypictures_views.blog_list_api,name='blog_list_api'),
     url(r'api/article/(?P<slug>[-\w]+)$',mypictures_views.article_api,name='article_api'),
+
     url(r'^article/new/$', mypictures_views.new_article, name='new_article'),
     url(r'^article/(?P<slug>[-\w]+)$',mypictures_views.article,name='article'),
     url(r'^article/tag/(?P<slug>[-\w]+)/?', mypictures_views.tag, name='tag'),
